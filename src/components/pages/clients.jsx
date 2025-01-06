@@ -39,7 +39,7 @@ const OurClients = () => {
             <div className="bg-white p-8 rounded-lg shadow-md mt-4">
               <p className="text-lg text-gray-700 mb-4">
                 <p className="font-semibold">Project : Kohinoor Tinsel Town 2.0, Hinjewadi Phase-2, 3BHK. </p>
-                Pune Realty was my first option out of all the Real estate consultants I'm familiar with at Pune. Discussion with the team was simple. They comprehended my need and made property recommendations that were spot-on. They always show up on time for scheduled appointments. They maintain a clean and inviting
+                Pune Realty was my first option out of all the Real estate consultants Im familiar with at Pune. Discussion with the team was simple. They comprehended my need and made property recommendations that were spot-on. They always show up on time for scheduled appointments. They maintain a clean and inviting
               </p>
               <p className="text-gray-500">Michael Smith, Home Seller</p>
             </div>
@@ -55,7 +55,7 @@ const OurClients = () => {
             <div className="bg-white p-8 rounded-lg shadow-md mt-4">
               <p className="text-lg text-gray-700 mb-4">
               <p className="font-semibold">Project : Kohinoor Tinsel Town 2.0, Hinjewadi Phase-2, 3BHK. </p>
-              If you're looking for a trustworthy guide who knows their way around the real estate market inside and out, look no further than Pune Realty. The team makes an effort to learn about the specifics of your need so that they can provide you with tailored suggestions. You can trust in their sincere approach because they have a wealth of 
+              If you re looking for a trustworthy guide who knows their way around the real estate market inside and out, look no further than Pune Realty. The team makes an effort to learn about the specifics of your need so that they can provide you with tailored suggestions. You can trust in their sincere approach because they have a wealth of 
               </p>
               <p className="text-gray-500">David Brown, Property Owner</p>
             </div>

@@ -78,7 +78,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex mt-5">
           <li>
-            <Link to="home" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="TopLocations" smooth={true} duration={500} className='hover:text-orange-500'>
               HOME
             </Link>
           </li>
@@ -103,7 +103,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="demo" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="footer" smooth={true} duration={500} className='hover:text-orange-500'>
               CONTACT US
             </Link>
           </li>
