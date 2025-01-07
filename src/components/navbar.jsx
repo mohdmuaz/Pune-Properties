@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import '../index.css';
 import Logo from '../assets/logo.webp';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [setIsScrolled] = useState(false);
   const [showEnquireForm, setShowEnquireForm] = useState(false);
   const [showPostPropertyForm, setShowPostPropertyForm] = useState(false);
 
@@ -38,10 +38,14 @@ const Navbar = () => {
   return (
     <div>
       {/* Navbar */}
-      <div className={`fixed top-0 z-50 w-full h-[px] flex justify-between items-center px-4 text-black font-semibold ${isScrolled ? "bg-white" : "bg-transparent"}`}>
+      <div
+        className={`fixed top-0 z-50 w-full h-[px] flex justify-between items-center px-4 text-black font-semibold bg-white shadow-lg` }
+      >
         {/* Logo */}
-        <div className="ml-10 mt-5 w-400 ">
-          <img src={Logo} alt="Logo" className="w-auto h-[50px]" /> {/* Keep logo size constant */}
+        <div className="ml-10 mt-5 w-400 mb-3 ">
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="w-auto h-[50px] cursor-pointer" />
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -78,37 +82,37 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex mt-5">
           <li>
-            <Link to="TopLocations" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="/" className="hover:text-orange-500">
               HOME
             </Link>
           </li>
           <li>
-            <Link to="about" smooth={true} duration={500}className='hover:text-orange-500'>
+            <Link to="/#about" className="hover:text-orange-500">
               ABOUT US
             </Link>
           </li>
           <li>
-            <Link to="feature" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="/#feature" className="hover:text-orange-500">
               RESIDENTIAL
             </Link>
           </li>
           <li>
-            <Link to="sale" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="/#sale" className="hover:text-orange-500">
               COMMERCIAL
             </Link>
           </li>
           <li>
-            <Link to="service" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="/#service" className="hover:text-orange-500">
               RESALE
             </Link>
           </li>
           <li>
-            <Link to="footer" smooth={true} duration={500} className='hover:text-orange-500'>
+            <Link to="/#footer" className="hover:text-orange-500">
               CONTACT US
             </Link>
           </li>
           <li>
-            <button className='hover:text-orange-500' onClick={handleEnquireNowClick}>
+            <button className="hover:text-orange-500" onClick={handleEnquireNowClick}>
               ENQUIRE NOW
             </button>
           </li>
@@ -116,10 +120,16 @@ const Navbar = () => {
 
         {/* Post Property and Enquire Now Button */}
         <div className="hidden md:flex">
-          <button className="px-4 py-2 bg-blue-500 text-white hover:bg-orange-600 hover:text-white mx-2" onClick={handlePostPropertyClick}>
+          <button
+            className="px-4 py-2 bg-blue-500 text-white hover:bg-orange-600 hover:text-white mx-2"
+            onClick={handlePostPropertyClick}
+          >
             POST PROPERTY
           </button>
-          <button className="px-4 py-2 bg-blue-500 text-white hover:bg-orange-600 hover:text-white mx-2" onClick={handleEnquireNowClick}>
+          <button
+            className="px-4 py-2 bg-blue-500 text-white hover:bg-orange-600 hover:text-white mx-2"
+            onClick={handleEnquireNowClick}
+          >
             ENQUIRE NOW
           </button>
         </div>
@@ -131,7 +141,7 @@ const Navbar = () => {
           } md:hidden flex flex-col bg-blue-800 text-white w-full absolute top-16 left-0 z-10`}
         >
           <Link
-            to="home"
+            to="Topcontent"
             smooth={true}
             duration={500}
             className="p-4 cursor-pointer"
@@ -176,7 +186,7 @@ const Navbar = () => {
             RESALE
           </Link>
           <Link
-            to="demo"
+            to="footer"
             smooth={true}
             duration={500}
             className="p-4 cursor-pointer"

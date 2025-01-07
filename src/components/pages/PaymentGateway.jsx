@@ -1,9 +1,44 @@
-
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const PaymentGateway = () => {
   const location = useLocation();
   const { property } = location.state || {};
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+
+  const handlePayment = () => {
+    if (!property) return;
+
+    // Razorpay payment options
+    const options = {
+      key: "rzp_test_tN3i854xgi7E9J", 
+      amount: parseInt(property.price.replace(/[^0-9]/g, "")) * 100, 
+      currency: "INR",
+      name: property.name,
+      description: property.description,
+      image: property.image,
+      handler: function (response) {
+        console.log("Payment successful:", response);
+        setPaymentSuccess(true);
+      },
+      prefill: {
+        name: "Cardholder Name",
+        email: "user@example.com", 
+        contact: "9876543210", 
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.on("payment.failed", function (response) {
+      console.error("Payment failed:", response.error);
+      alert("Payment failed. Please try again.");
+    });
+
+    rzp.open();
+  };
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gray-100 mt-16">
@@ -11,7 +46,9 @@ const PaymentGateway = () => {
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Payment Details
         </h1>
-        {property ? (
+        {paymentSuccess ? (
+          <p className="text-gray-700 text-center">Payment Successful!</p>
+        ) : property ? (
           <>
             <img
               src={property.image}
@@ -26,59 +63,15 @@ const PaymentGateway = () => {
               Total Price: {property.price}
             </p>
 
-            <form className="grid gap-4">
-              <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Card Number
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-md"
-                  placeholder="1234 5678 9012 3456"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-gray-700 font-medium mb-1">
-                    Expiry Date
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border rounded-md"
-                    placeholder="MM/YY"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 font-medium mb-1">
-                    CVV
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border rounded-md"
-                    placeholder="123"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Cardholder Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border rounded-md"
-                  placeholder="John Doe"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-500"
-              >
-                Complete Payment
-              </button>
-            </form>
+            <button
+              onClick={handlePayment}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-500"
+            >
+              Pay with Razorpay
+            </button>
           </>
         ) : (
-          <p className="text-gray-700 text-center">Payment Successful!</p>
+          <p className="text-gray-700 text-center">No property details found.</p>
         )}
       </div>
     </div>

@@ -1,4 +1,3 @@
-// TopContent Component
 const TopContent = () => {
   const items = [
     {
@@ -19,7 +18,7 @@ const TopContent = () => {
   ];
 
   return (
-    <div className="w-full bg-blue-500 text-white left-0 right-0 z-50 mt-14">
+    <div className="w-full bg-blue-500 text-white top-0 left-0 z-40 mt-5">
       <div className="relative overflow-hidden whitespace-nowrap group">
         <div
           className="flex animate-marquee space-x-8 items-center group-hover:animate-pause"
@@ -32,7 +31,7 @@ const TopContent = () => {
               <span className="text-lg">{item.text}</span>
               <button
                 className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-400 transition-colors duration-300"
-                onClick={() => window.location.href = item.link}
+                onClick={() => (window.location.href = item.link)}
               >
                 More details
               </button>
@@ -52,7 +51,7 @@ const TopContent = () => {
             display: inline-flex;
             will-change: transform;
           }
-          .group-hover\\:animate-pause {
+          .group-hover:animate-pause {
             animation-play-state: paused;
           }
         `}
@@ -61,10 +60,9 @@ const TopContent = () => {
   );
 };
 
-// Main Component with Bottom Section
-const topcontent = () => {
+const TopContentPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center mt-10">
+    <div className="flex flex-col items-center mt-20">
       <TopContent />
 
       <div className="bg-blue-500 pt-4 pb-4 flex flex-col justify-between w-[70vw] mx-auto border rounded-lg mt-5">
@@ -132,4 +130,4 @@ const topcontent = () => {
   );
 };
 
-export default topcontent;
+export default TopContentPage;
